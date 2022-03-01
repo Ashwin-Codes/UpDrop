@@ -1,0 +1,14 @@
+.input-field {
+	border: none;
+	background-color: transparent;
+	border-bottom: 2px solid white;
+	outline: none;
+	color: white;
+	letter-spacing: 1.5px;
+	font-size: 1.2rem;
+	text-align: center;
+}
+
+.input-field::placeholder {
+	color: rgba(255, 255, 255, 0.5);
+}

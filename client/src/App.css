@@ -1,0 +1,12 @@
+:root {
+	/* --primary-color: #303654; */
+	--primary-color: #094ab1;
+	--sidebar-icon-color: #fffff;
+	--file-icon-color: #094ab1;
+}
+
+.page {
+	display: grid;
+	grid-template-columns: 1fr;
+	background: #ffffff;
+}

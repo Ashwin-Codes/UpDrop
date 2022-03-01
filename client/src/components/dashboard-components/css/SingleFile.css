@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+
+.file {
+	background: var(--primary-color);
+	height: 11rem;
+	min-width: 16rem;
+	border-radius: 10px;
+	position: relative;
+	color: white;
+	font-family: "Open Sans", sans-serif;
+	cursor: pointer;
+	transition: all 100ms linear;
+}
+
+.file:hover {
+	transform: scale(1.2);
+}
+
+.filecontainer {
+	display: flex;
+	align-items: center;
+	margin-top: 15px;
+	max-width: 90%;
+	max-height: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.fileicon {
+	min-height: 4rem;
+	min-width: 4rem;
+	background: white;
+	border-radius: 4px;
+	display: grid;
+	place-content: center;
+}
+
+.filename {
+	letter-spacing: 1.5px;
+	margin-left: 15px;
+	font-size: 1rem;
+	font-weight: bold;
+	width: 70%;
+	overflow-wrap: break-word;
+}
+
+.filestats {
+	width: fit-content;
+	position: absolute;
+	top: 100%;
+	left: 100%;
+	transform: translateX(-100%) translateY(-100%);
+	padding: 0.2rem 0.5rem 0.5rem 0.5rem;
+	font-weight: bold;
+	letter-spacing: 1.5px;
+}
+
+.icon {
+	color: var(--file-icon-color);
+	min-height: 3rem;
+	min-width: 3rem;
+}

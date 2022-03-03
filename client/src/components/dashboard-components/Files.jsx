@@ -46,7 +46,6 @@ export default function Files({ searchInputText }) {
 
 	// Rerenders by changing files state. Passed to child components
 	async function rerender() {
-		console.log("Rerender Function ran");
 		const url = { directory: `${params["*"]}` };
 		const res = await fetch("http://localhost:5000/files", {
 			method: "POST",

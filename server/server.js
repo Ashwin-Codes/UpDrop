@@ -24,9 +24,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Hosting Frontend
-// app.get("/*", (req, res) => {
-// 	res.sendFile(path.join(__dirname, "../client/build", "index.html"));
-// });
+app.get("/*", (req, res) => {
+	res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+});
 
 // Handles FileUpload
 app.post("/upload", (req, res) => {

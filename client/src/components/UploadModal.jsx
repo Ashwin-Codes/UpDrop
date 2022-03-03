@@ -40,7 +40,6 @@ export default function UploadModal({ setOpenModal, rerender }) {
 
 		http.open("POST", url, true);
 		http.upload.addEventListener("progress", (event) => {
-			console.log(`${file.name} : ${Math.floor((event.loaded / event.total) * 100)}%`);
 			setFileUploadProgress((prevState) => {
 				return {
 					...prevState,

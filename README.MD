@@ -1,5 +1,5 @@
 Requirements :
-NODE.JS and NPM
+NODE.JS v14.17.0 and NPM 6.14.13
 
 How to run server -
 

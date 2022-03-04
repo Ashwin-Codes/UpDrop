@@ -1,6 +1,5 @@
 const express = require("express");
 const fileUpload = require("express-fileupload");
-const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const path = require("path");
@@ -14,24 +13,20 @@ app.use(
 	})
 );
 
-app.use(
-	cors({
-		origin: "http://localhost:3000",
-	})
-);
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Hosting Frontend
-app.get("/*", (req, res) => {
-	res.sendFile(path.join(__dirname, "../client/build", "index.html"));
+// Download Files
+app.get("/download/*", (req, res) => {
+	const filePath = req.params["0"];
+	console.log(filePath);
+	res.download(`${__dirname}/uploads/${filePath}`);
 });
 
 // Handles FileUpload
 app.post("/upload", (req, res) => {
 	const body = req.body;
-	console.log(body);
 	const file = req.files.file;
 	file.mv(`${__dirname}/uploads/${body.path}/${file.name}`);
 	res.end();
@@ -61,7 +56,6 @@ app.post("/files", (req, res) => {
 	});
 
 	res.json(files);
-	// res.end();
 });
 
 // Creates Folder
@@ -75,14 +69,11 @@ app.post("/mkdir", (req, res) => {
 	res.end();
 });
 
-// Download Files
-app.get("/download/*", (req, res) => {
-	const filePath = req.params["0"];
-	console.log(filePath);
-	res.download(`${__dirname}/uploads/${filePath}`);
-	// res.end();
+// Hosting Frontend
+app.get("/*", (req, res) => {
+	res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 
 app.listen(5000, () => {
-	console.log("Running...");
+	console.log("Server Running on port 5000 🚀🚀🚀");
 });

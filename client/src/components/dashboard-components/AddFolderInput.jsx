@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import "./css/AddFolderInput.css";
+import build from "../../build-type.json";
 
 export default function AddFolderInput({ params, rerender }) {
 	const inputRef = useRef();
@@ -16,7 +17,14 @@ export default function AddFolderInput({ params, rerender }) {
 	function createFolder(e) {
 		e.preventDefault();
 		const folderName = getFolderName();
-		fetch("http://localhost:5000/mkdir", {
+		let url = "/mkdir";
+
+		// A fix for developers so the urls could automatically change to avoid CORS.
+		if (build.TYPE === "DEVELOPMENT") {
+			url = "http://localhost:5000/mkdir";
+		}
+
+		fetch(url, {
 			method: "POST",
 			body: JSON.stringify({ name: `${params["*"]}/${folderName}` }),
 			headers: {

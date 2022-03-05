@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import build from ".././build-type.json";
 
 // Css and icons
 import "./css/UploadModal.css";
@@ -36,7 +37,12 @@ export default function UploadModal({ setOpenModal, rerender }) {
 		data.append("path", params["*"]);
 
 		var http = new XMLHttpRequest();
-		var url = "http://localhost:5000/upload";
+		var url = "/upload";
+
+		// A fix for developers so the urls could automatically change to avoid CORS.
+		if (build.TYPE === "DEVELOPMENT") {
+			url = "http://localhost:5000/upload";
+		}
 
 		http.open("POST", url, true);
 		http.upload.addEventListener("progress", (event) => {

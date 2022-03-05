@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import build from "../../build-type.json";
 
 // BTN Icons
 import { BsFolderPlus as AddFolderIcon } from "react-icons/bs";
@@ -39,17 +40,30 @@ export default function Files({ searchInputText }) {
 	}
 
 	function downloadFile(fileName) {
-		const url = "http://localhost:5000/download";
+		let url = "/download";
+
+		// A fix for developers so the urls could automatically change to avoid CORS.
+		if (build.TYPE === "DEVELOPMENT") {
+			url = "http://localhost:5000/download";
+		}
+
 		let file = `${params["*"]}/${fileName}`;
 		window.open(`${url}/${file}`);
 	}
 
 	// Rerenders by changing files state. Passed to child components
 	async function rerender() {
-		const url = { directory: `${params["*"]}` };
-		const res = await fetch("http://localhost:5000/files", {
+		let url = "/files";
+
+		// A fix for developers so the urls could automatically change to avoid CORS.
+		if (build.TYPE === "DEVELOPMENT") {
+			url = "http://localhost:5000/files";
+		}
+
+		const body = { directory: `${params["*"]}` };
+		const res = await fetch(url, {
 			method: "POST",
-			body: JSON.stringify(url),
+			body: JSON.stringify(body),
 			headers: {
 				"Content-Type": "application/json",
 			},
@@ -62,10 +76,17 @@ export default function Files({ searchInputText }) {
 	// changeUrl changes the URL parameters and this useEffect listens for that change and update the state
 	useEffect(() => {
 		async function getFiles() {
-			const url = { directory: `${params["*"]}` };
-			const response = await fetch("http://localhost:5000/files", {
+			let url = "/files";
+
+			// A fix for developers so the urls could automatically change to avoid CORS.
+			if (build.TYPE === "DEVELOPMENT") {
+				url = "http://localhost:5000/files";
+			}
+
+			const body = { directory: `${params["*"]}` };
+			const response = await fetch(url, {
 				method: "POST",
-				body: JSON.stringify(url),
+				body: JSON.stringify(body),
 				headers: {
 					"Content-Type": "application/json",
 				},

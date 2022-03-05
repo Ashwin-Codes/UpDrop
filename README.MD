@@ -20,11 +20,13 @@ npm install
 ```
 
 ```
-node server.js
+npm start
 ```
 
-Hosts on :
-http://localhost:5000
+Hosts on port 5000;
+
+For Developers :
+when building frontend, make sure to change TYPE:"DEVELOPMENT" to TYPE:"PRODUCTION" in client/src/build-type.json
 
 UPCOMMING
 

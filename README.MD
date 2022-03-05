@@ -26,7 +26,7 @@ npm start
 Hosts on port 5000;
 
 For Developers :
-when building frontend, make sure to change TYPE:"DEVELOPMENT" to TYPE:"PRODUCTION" in client/src/build-type.json
+when working on react frontend, make sure to change TYPE:"PRODUCTION" to TYPE:"DEVELOPMENT" in client/src/build-type.json
 
 UPCOMMING
 

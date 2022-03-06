@@ -24,6 +24,19 @@ app.use(express.static(path.resolve(__dirname, "../client/build")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Delete Files
+app.post("/rm", (req, res) => {
+	const body = req.body;
+	console.log(body);
+	if (body.isFolder) {
+		fs.rmSync(`${__dirname}/uploads${body.path}`, { recursive: true, force: true });
+	} else {
+		fs.unlinkSync(`${__dirname}/uploads${body.path}`);
+	}
+
+	res.end();
+});
+
 // Download Files
 app.get("/download/*", (req, res) => {
 	const filePath = req.params["0"];
@@ -31,7 +44,7 @@ app.get("/download/*", (req, res) => {
 	res.download(`${__dirname}/uploads/${filePath}`);
 });
 
-// Handles FileUpload
+// Upload Files
 app.post("/upload", (req, res) => {
 	const body = req.body;
 	const file = req.files.file;
@@ -39,7 +52,7 @@ app.post("/upload", (req, res) => {
 	res.end();
 });
 
-// Returns Files and Folders
+// Fetch Files and Folder
 app.post("/files", (req, res) => {
 	const body = req.body;
 	console.log("/files path : ", body);

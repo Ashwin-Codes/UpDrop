@@ -41,25 +41,43 @@ export default function Files({ searchInputText }) {
 
 	function downloadFile(fileName) {
 		let url = "/download";
-
 		// A fix for developers so the urls could automatically change to avoid CORS.
 		if (build.TYPE === "DEVELOPMENT") {
 			url = "http://localhost:5000/download";
 		}
-
 		let file = `${params["*"]}/${fileName}`;
 		window.open(`${url}/${file}`);
+	}
+
+	function stopPropogation(e) {
+		e.stopPropagation();
+	}
+
+	async function deleteFile(file) {
+		let url = "/rm";
+		// A fix for developers so the urls could automatically change to avoid CORS.
+		if (build.TYPE === "DEVELOPMENT") {
+			url = "http://localhost:5000/rm";
+		}
+		const body = { path: `${params["*"]}/${file.name}`, isFolder: file.isFolder };
+		await fetch(url, {
+			method: "POST",
+			body: JSON.stringify(body),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+
+		rerender();
 	}
 
 	// Rerenders by changing files state. Passed to child components
 	async function rerender() {
 		let url = "/files";
-
 		// A fix for developers so the urls could automatically change to avoid CORS.
 		if (build.TYPE === "DEVELOPMENT") {
 			url = "http://localhost:5000/files";
 		}
-
 		const body = { directory: `${params["*"]}` };
 		const res = await fetch(url, {
 			method: "POST",
@@ -77,12 +95,10 @@ export default function Files({ searchInputText }) {
 	useEffect(() => {
 		async function getFiles() {
 			let url = "/files";
-
 			// A fix for developers so the urls could automatically change to avoid CORS.
 			if (build.TYPE === "DEVELOPMENT") {
 				url = "http://localhost:5000/files";
 			}
-
 			const body = { directory: `${params["*"]}` };
 			const response = await fetch(url, {
 				method: "POST",
@@ -148,6 +164,8 @@ export default function Files({ searchInputText }) {
 								isFolder={ele.isFolder}
 								filesize={ele.filesize}
 								icon={setIcon(ele)}
+								deleteFile={deleteFile}
+								stopPropogation={stopPropogation}
 							/>
 						);
 					})}

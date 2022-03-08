@@ -10,20 +10,21 @@ import { BsPlusCircle as AddFileIcon } from "react-icons/bs";
 import "./css/Files.css";
 import { setIcon } from "./FileTypeIcons.jsx";
 
-// Components
+// Components and hooks
 import SingleFile from "./SingleFile";
 import AddFolderInput from "./AddFolderInput";
-import UploadModal from "../UploadModal";
+import useUploader from "../../hooks/useUploader";
 
 export default function Files({ searchInputText }) {
 	const navigate = useNavigate();
 	const params = useParams();
 
+	const [Uploader, toggleModal] = useUploader(rerender);
+
 	// States
 	const [files, setFiles] = useState([]);
 	const [filteredFiles, setfilteredFiles] = useState([]);
 	const [addingFolder, setAddingFolder] = useState(false);
-	const [openModal, setOpenModal] = useState(false);
 
 	// Filter the files state when search input value changes
 	useEffect(() => {
@@ -115,7 +116,7 @@ export default function Files({ searchInputText }) {
 
 	return (
 		<>
-			{openModal && <UploadModal setOpenModal={setOpenModal} rerender={rerender} />}
+			<Uploader />
 			<div className="files">
 				<div className="tools-and-title-container">
 					<div className="title-container">
@@ -146,7 +147,7 @@ export default function Files({ searchInputText }) {
 						<button
 							className="btn add-file-btn"
 							onClick={() => {
-								setOpenModal(!openModal);
+								toggleModal();
 							}}
 						>
 							<AddFileIcon className="btn-icon" />

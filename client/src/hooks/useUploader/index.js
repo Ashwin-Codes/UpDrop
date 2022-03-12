@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import build from "../../build-type.json";
-import ReactDOM from "react-dom";
 
 // Css and icons
 import "./Uploader.css";
@@ -94,7 +93,7 @@ export default function Index(rerender) {
 		if (!openModal) {
 			return <></>;
 		}
-		return ReactDOM.createPortal(
+		return (
 			<div
 				className="backscreen"
 				onClick={() => {
@@ -138,8 +137,7 @@ export default function Index(rerender) {
 						})}
 					</div>
 				</div>
-			</div>,
-			document.getElementById("uploader")
+			</div>
 		);
 	}
 

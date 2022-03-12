@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import "./css/AddFolderInput.css";
+import "./AddFolderInput.css";
 import build from "../../build-type.json";
 
 export default function AddFolderInput({ params, rerender }) {

@@ -2,8 +2,8 @@ import "./App.css";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 // Pages
-import Dashboard from "./pages/Dashboard";
-import Configure from "./pages/Configure";
+import Dashboard from "./pages/dashboard/";
+import Configure from "./pages/configure/";
 
 function App() {
 	return (

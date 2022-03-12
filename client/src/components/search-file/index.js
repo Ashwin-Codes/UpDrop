@@ -1,5 +1,7 @@
 import React from "react";
-import "./css/FileSearchForm.css";
+
+// Css and Icons Imports
+import "./FileSearchForm.css";
 import { HiSearchCircle } from "react-icons/hi";
 
 export default function FileSearchForm({ searchInputRef, onChange }) {

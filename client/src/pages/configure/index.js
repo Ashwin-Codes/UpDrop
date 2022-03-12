@@ -1,8 +1,11 @@
 import React from "react";
 
 // Components
-import Sidebar from "../components/Sidebar";
-import FileSearchForm from "../components/FileSearchForm";
+import Sidebar from "../../components/sidebar";
+import FileSearchForm from "../../components/search-file";
+
+// Css
+import "./Configure.css";
 
 export default function Configure() {
 	return (

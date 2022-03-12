@@ -1,7 +1,7 @@
 import React from "react";
 
 // css and icons
-import "./css/SingleFile.css";
+import "./SingleFile.css";
 import { MdOutlineDeleteSweep } from "react-icons/md";
 
 export default function SingleFile({

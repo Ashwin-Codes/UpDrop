@@ -1,11 +1,12 @@
 import React from "react";
-import "./css/Sidebar.css";
 
-// Icon Imports
+// Css and Icon Imports
+import "./Sidebar.css";
 import { FaCloudUploadAlt } from "react-icons/fa";
 import { MdOutlineDashboard } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 
+// Components Imports
 import SidebarNavLinks from "./SidebarNavLinks";
 
 export default function Sidebar() {

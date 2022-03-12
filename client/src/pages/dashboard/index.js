@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 
 // Components
-import Sidebar from "../components/Sidebar";
-import FileSearchForm from "../components/FileSearchForm";
-import Files from "../components/dashboard-components/Files";
+import Sidebar from "../../components/sidebar";
+import FileSearchForm from "../../components/search-file";
+import Files from "../../components/files";
 
 // CSS
-import "./css/Dashboard.css";
+import "./Dashboard.css";
 
 export default function Dashboard() {
 	const [searchInputText, setSearchInputText] = useState("");

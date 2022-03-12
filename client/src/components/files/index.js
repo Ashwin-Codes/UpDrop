@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import { useParams, useNavigate } from "react-router-dom";
 import build from "../../build-type.json";
 
@@ -7,7 +8,7 @@ import { BsFolderPlus as AddFolderIcon } from "react-icons/bs";
 import { BsPlusCircle as AddFileIcon } from "react-icons/bs";
 
 // CSS and icons
-import "./css/Files.css";
+import "./Files.css";
 import { setIcon } from "./FileTypeIcons.jsx";
 
 // Components and hooks

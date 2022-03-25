@@ -48,7 +48,7 @@ export default function Index(rerender) {
 		setFile(fileList);
 	}
 
-	// Upload function. Used XML request for using progress property.
+	// Upload function. Used XML request for progress property.
 	async function uploadRequest(file) {
 		let data = new FormData();
 		data.append("file", file);

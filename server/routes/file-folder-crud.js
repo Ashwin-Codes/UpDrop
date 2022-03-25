@@ -20,7 +20,7 @@ router.post("/rm", (req, res) => {
 	} else {
 		fs.unlinkSync(path);
 	}
-
+	res.json({});
 	res.end();
 });
 
@@ -51,6 +51,7 @@ router.post("/mkdir", (req, res) => {
 	} else {
 		fs.mkdirSync(folder);
 	}
+	res.json({ err: false, msg: "Folder Added." });
 	res.end();
 });
 

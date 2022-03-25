@@ -9,10 +9,9 @@ router.get("/download/*", (req, res) => {
 	const filePath = req.params["0"];
 	console.log(filePath);
 	try {
-		res.download(`${__dirname}/uploads/${filePath}`);
+		res.download(`${__dirname}/../uploads/${filePath}`);
 	} catch (err) {
-		console.log(err);
-		res.json({ err: true, errMsg: "Server failed To delete file." });
+		res.json({ err: true, errMsg: "File Not Found." });
 	}
 });
 

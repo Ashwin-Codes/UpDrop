@@ -4,15 +4,7 @@ import React from "react";
 import "./SingleFile.css";
 import { MdOutlineDeleteSweep } from "react-icons/md";
 
-export default function SingleFile({
-	name,
-	isFolder,
-	filesize,
-	icon,
-	onClick,
-	deleteFile,
-	stopPropogation,
-}) {
+export default function SingleFile({ name, isFolder, filesize, icon, onClick, deleteFile }) {
 	const Icon = icon;
 	let trimmedName = `${name.slice(0, 25).trim()}${name.length > 25 ? "..." : ""}`;
 	let nameSplit = name.split(".");
@@ -32,7 +24,12 @@ export default function SingleFile({
 				<p className="filename">{trimmedName}</p>
 			</div>
 
-			<div className="delete-btn" onClick={stopPropogation}>
+			<div
+				className="delete-btn"
+				onClick={(e) => {
+					e.stopPropagation();
+				}}
+			>
 				<MdOutlineDeleteSweep
 					className="delete-btn-icon"
 					onClick={deleteFile.bind(this, { name, isFolder })}

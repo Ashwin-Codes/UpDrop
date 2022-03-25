@@ -15,9 +15,11 @@ import { setIcon } from "./FileTypeIcons.jsx";
 import SingleFile from "./SingleFile";
 import AddFolderInput from "./AddFolderInput";
 import useUploader from "../../hooks/useUploader";
+import useNotification from "../../hooks/useNotification";
 
 export default function Files({ searchInputText }) {
 	const navigate = useNavigate();
+	const [Notification, notify] = useNotification("notification");
 	const params = useParams();
 
 	const [Uploader, toggleModal] = useUploader(rerender);
@@ -51,10 +53,6 @@ export default function Files({ searchInputText }) {
 		window.open(`${url}/${file}`);
 	}
 
-	function stopPropogation(e) {
-		e.stopPropagation();
-	}
-
 	async function deleteFile(file) {
 		let url = "/rm";
 		// A fix for developers so the urls could automatically change to avoid CORS.
@@ -62,15 +60,20 @@ export default function Files({ searchInputText }) {
 			url = "http://localhost:5000/rm";
 		}
 		const body = { path: `${params["*"]}/${file.name}`, isFolder: file.isFolder };
-		await fetch(url, {
+		let response = await fetch(url, {
 			method: "POST",
 			body: JSON.stringify(body),
 			headers: {
 				"Content-Type": "application/json",
 			},
 		});
-
-		rerender();
+		const data = await response.json();
+		if (data?.err) {
+			notify(data.errMsg, 4, "error");
+		} else {
+			notify("File Deleted.");
+			rerender();
+		}
 	}
 
 	// Rerenders by changing files state. Passed to child components
@@ -108,16 +111,24 @@ export default function Files({ searchInputText }) {
 				headers: {
 					"Content-Type": "application/json",
 				},
+			}).catch((err) => {
+				console.log("error");
+				notify("Failed to Fetch Files.", 3, "error");
 			});
 			const data = await response.json();
-			setFiles(data);
+			if (data?.err) {
+				notify(data.errMsg, 30, "error");
+			} else {
+				setFiles(data);
+			}
 		}
 		getFiles();
-	}, [params]);
+	}, [params, notify]);
 
 	return (
 		<>
 			<Uploader />
+			<Notification />
 			<div className="files">
 				<div className="tools-and-title-container">
 					<div className="title-container">
@@ -142,7 +153,11 @@ export default function Files({ searchInputText }) {
 							{!addingFolder ? (
 								"Add Folder"
 							) : (
-								<AddFolderInput params={params} rerender={rerender} />
+								<AddFolderInput
+									params={params}
+									rerender={rerender}
+									notify={notify}
+								/>
 							)}
 						</div>
 						<button
@@ -167,7 +182,6 @@ export default function Files({ searchInputText }) {
 								filesize={ele.filesize}
 								icon={setIcon(ele)}
 								deleteFile={deleteFile}
-								stopPropogation={stopPropogation}
 							/>
 						);
 					})}

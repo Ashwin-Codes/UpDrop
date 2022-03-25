@@ -3,6 +3,8 @@
 	--primary-color: #094ab1;
 	--sidebar-icon-color: #fffff;
 	--file-icon-color: #094ab1;
+	--error-color: #ef6364;
+	--success-color: #45b0f8;
 }
 
 .page {

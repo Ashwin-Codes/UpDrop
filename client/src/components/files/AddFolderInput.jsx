@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import "./AddFolderInput.css";
 import build from "../../build-type.json";
 
-export default function AddFolderInput({ params, rerender }) {
+export default function AddFolderInput({ params, rerender, notify }) {
 	const inputRef = useRef();
 
 	function getFolderName() {
@@ -14,7 +14,7 @@ export default function AddFolderInput({ params, rerender }) {
 		return folderName.trim() ? folderName.trim() : "New Folder";
 	}
 
-	function createFolder(e) {
+	async function createFolder(e) {
 		e.preventDefault();
 		const folderName = getFolderName();
 		let url = "/mkdir";
@@ -24,25 +24,33 @@ export default function AddFolderInput({ params, rerender }) {
 			url = "http://localhost:5000/mkdir";
 		}
 
-		fetch(url, {
+		const response = await fetch(url, {
 			method: "POST",
 			body: JSON.stringify({ name: `${params["*"]}/${folderName}` }),
 			headers: {
 				"Content-Type": "application/json",
 			},
-		}).then(() => {
-			rerender();
 		});
+
+		const data = await response.json();
+		if (data.err) {
+			notify(data.errMsg, 5, "error");
+		} else {
+			notify(data.msg, 2, "success");
+			rerender();
+		}
 	}
 
 	return (
-		<form onSubmit={createFolder}>
-			<input
-				className="input-field"
-				autoFocus
-				placeholder="New Folder"
-				ref={inputRef}
-			></input>
-		</form>
+		<>
+			<form onSubmit={createFolder}>
+				<input
+					className="input-field"
+					autoFocus
+					placeholder="New Folder"
+					ref={inputRef}
+				></input>
+			</form>
+		</>
 	);
 }

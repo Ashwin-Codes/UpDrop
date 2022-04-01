@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 import { useParams, useNavigate } from "react-router-dom";
-import build from "../../build-type.json";
 
 // BTN Icons
 import { BsFolderPlus as AddFolderIcon } from "react-icons/bs";
@@ -46,7 +45,7 @@ export default function Files({ searchInputText }) {
 	function downloadFile(fileName) {
 		let url = "/download";
 		// A fix for developers so the urls could automatically change to avoid CORS.
-		if (build.TYPE === "DEVELOPMENT") {
+		if (process.env.NODE_ENV === "development") {
 			url = "http://localhost:5000/download";
 		}
 		let file = `${params["*"]}/${fileName}`;
@@ -56,7 +55,7 @@ export default function Files({ searchInputText }) {
 	async function deleteFile(file) {
 		let url = "/rm";
 		// A fix for developers so the urls could automatically change to avoid CORS.
-		if (build.TYPE === "DEVELOPMENT") {
+		if (process.env.NODE_ENV === "development") {
 			url = "http://localhost:5000/rm";
 		}
 		const body = { path: `${params["*"]}/${file.name}`, isFolder: file.isFolder };
@@ -80,7 +79,7 @@ export default function Files({ searchInputText }) {
 	async function rerender() {
 		let url = "/files";
 		// A fix for developers so the urls could automatically change to avoid CORS.
-		if (build.TYPE === "DEVELOPMENT") {
+		if (process.env.NODE_ENV === "development") {
 			url = "http://localhost:5000/files";
 		}
 		const body = { directory: `${params["*"]}` };
@@ -101,7 +100,7 @@ export default function Files({ searchInputText }) {
 		async function getFiles() {
 			let url = "/files";
 			// A fix for developers so the urls could automatically change to avoid CORS.
-			if (build.TYPE === "DEVELOPMENT") {
+			if (process.env.NODE_ENV === "development") {
 				url = "http://localhost:5000/files";
 			}
 			const body = { directory: `${params["*"]}` };

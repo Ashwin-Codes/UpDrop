@@ -25,13 +25,8 @@ npm start
 
 Hosts on port 5000;
 
-For Developers :
-when working on react frontend, make sure to change TYPE:"PRODUCTION" to TYPE:"DEVELOPMENT" in client/src/build-type.json
-
 UPCOMMING
 
-1. Responsive UI
-2. Refined UI
+1. ~~Responsive UI~~
+2. ~~Refined UI~~
 3. Working configuration tab
-4. Working recent files tab
-5. Files could be shared

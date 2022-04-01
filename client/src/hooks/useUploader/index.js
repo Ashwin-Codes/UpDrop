@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import build from "../../build-type.json";
 
 // Css and icons
 import "./Uploader.css";
@@ -58,7 +57,7 @@ export default function Index(rerender) {
 		var url = "/upload";
 
 		// A fix for developers so the urls could automatically change to avoid CORS.
-		if (build.TYPE === "DEVELOPMENT") {
+		if (process.env.NODE_ENV === "development") {
 			url = "http://localhost:5000/upload";
 		}
 

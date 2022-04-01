@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import "./AddFolderInput.css";
-import build from "../../build-type.json";
 
 export default function AddFolderInput({ params, rerender, notify }) {
 	const inputRef = useRef();
@@ -20,7 +19,7 @@ export default function AddFolderInput({ params, rerender, notify }) {
 		let url = "/mkdir";
 
 		// A fix for developers so the urls could automatically change to avoid CORS.
-		if (build.TYPE === "DEVELOPMENT") {
+		if (process.env.NODE_ENV === "development") {
 			url = "http://localhost:5000/mkdir";
 		}
 

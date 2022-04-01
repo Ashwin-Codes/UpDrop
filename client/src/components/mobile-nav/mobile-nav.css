@@ -5,14 +5,23 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-
-.sidebar {
+.backdrop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 998;
+}
+.mobile-nav {
 	background-color: var(--primary-color);
 	height: 100vh;
 	position: fixed;
+	z-index: 999;
 }
 
-.sidebar-links {
+.mobile-nav-links {
 	color: white;
 	margin-top: 5rem;
 	font-size: 1.1rem;
@@ -58,10 +67,4 @@
 
 .link-icon {
 	color: var(--sidebar-icon-color);
-}
-
-@media screen and (max-width: 980px) {
-	.sidebar {
-		display: none;
-	}
 }

@@ -151,7 +151,7 @@ export default function Files({ searchInputText }) {
 						>
 							<AddFolderIcon className="btn-icon" />
 							{!addingFolder ? (
-								"Add Folder"
+								<p className="btn-text">Add Folder</p>
 							) : (
 								<AddFolderInput
 									params={params}
@@ -167,10 +167,17 @@ export default function Files({ searchInputText }) {
 							}}
 						>
 							<AddFileIcon className="btn-icon" />
-							Add File
+							<p className="btn-text">Add File</p>
 						</button>
 					</div>
 				</div>
+
+				{/* Dublicate DIV for mobile screens*/}
+				<div className="mobile-title-container">
+					<h1 className="mobile-title">Files</h1>
+					<div className="mobile-underline"></div>
+				</div>
+
 				<div className="files-container">
 					{filteredFiles.map((ele) => {
 						return (

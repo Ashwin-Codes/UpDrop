@@ -57,6 +57,7 @@
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	row-gap: 3rem;
 	column-gap: 2.5rem;
+	margin-bottom: 2rem;
 }
 
 .adding-folder {
@@ -68,4 +69,56 @@
 	text-align: center;
 	font-size: 1.75rem;
 	letter-spacing: 3px;
+}
+
+.mobile-title {
+	color: rgb(90, 90, 90);
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+.mobile-underline {
+	width: 6rem;
+	height: 2px;
+	background: rgb(90, 90, 90);
+	margin-top: 0.5rem;
+}
+
+.mobile-title-container {
+	margin-top: 2rem;
+	font-size: 0.8rem;
+	display: none;
+}
+
+@media screen and (max-width: 720px) {
+	.title {
+		font-size: 1.5rem;
+	}
+	.underline {
+		width: 6rem;
+	}
+	.adding-folder {
+		width: 15rem;
+	}
+}
+
+@media screen and (max-width: 680px) {
+	.title-container {
+		display: none;
+	}
+	.mobile-title-container {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.btn {
+		width: 8rem;
+	}
+	.btn-text {
+		font-size: 0.8rem;
+	}
+	.tools-and-title-container {
+		justify-content: space-around;
+	}
 }

@@ -12,3 +12,15 @@
 .input-field::placeholder {
 	color: rgba(255, 255, 255, 0.5);
 }
+
+@media screen and (max-width: 720px) {
+	.input-field {
+		width: 9rem;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.input-field {
+		font-size: 0.9rem;
+	}
+}

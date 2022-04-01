@@ -43,7 +43,7 @@ export default function AddFolderInput({ params, rerender, notify }) {
 
 	return (
 		<>
-			<form onSubmit={createFolder}>
+			<form className="add-folder-input-form" onSubmit={createFolder}>
 				<input
 					className="input-field"
 					autoFocus

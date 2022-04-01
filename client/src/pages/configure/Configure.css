@@ -1,0 +1,20 @@
+.mobile-nav-container {
+	display: flex;
+	justify-content: end;
+	align-items: center;
+}
+
+.page-title-container {
+	width: 100%;
+	display: grid;
+	place-content: center;
+}
+
+.page-title {
+	width: 100%;
+	font-size: 2rem;
+	color: var(--primary-color);
+	letter-spacing: 3px;
+	padding-bottom: 0.5rem;
+	border-bottom: 5px solid var(--primary-color);
+}

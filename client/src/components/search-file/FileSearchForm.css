@@ -1,7 +1,6 @@
 .form {
 	display: flex;
 	width: min-content;
-	margin-bottom: 6rem;
 }
 
 .searchInput {
@@ -35,4 +34,10 @@
 
 .searchBtn:hover {
 	font-size: 2.3rem;
+}
+
+@media screen and (max-width: 400px) {
+	.searchInput {
+		width: 15rem;
+	}
 }

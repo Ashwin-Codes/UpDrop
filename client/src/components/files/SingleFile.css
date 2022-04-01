@@ -99,3 +99,9 @@
 		place-content: center;
 	}
 }
+
+@media screen and (max-width: 400px) {
+	.file:hover {
+		transform: scale(1.03);
+	}
+}

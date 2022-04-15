@@ -38,8 +38,8 @@ then
     return 0;
 fi
 
-# clientSetup
-# serverSetup
+clientSetup
+serverSetup
 
 echo "Start Server ? y/n"
 read CHOICE

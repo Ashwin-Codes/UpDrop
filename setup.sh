@@ -38,13 +38,13 @@ then
     return 0;
 fi
 
-clientSetup
-serverSetup
+# clientSetup
+# serverSetup
 
 echo "Start Server ? y/n"
-read $CHOICE
+read CHOICE
 
-if [[ $CHOICE -eq "y" || $CHOICE -eq "Y" ]]
+if [ $CHOICE == 'y' ] || [ $CHOICE == 'Y' ];
 then
 echo "$(tput setaf 1) $(tput setab 7)THIS REPOSITORY REQUIRES NODE V14+.MAKE SURE ITS INSTALLED."
 startServer

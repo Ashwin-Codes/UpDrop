@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 
 // Css and icons
 import "./Uploader.css";
-import { ImUpload } from "react-icons/im";
+import { ImUpload as BrowseFilesIcon } from "react-icons/im";
+import { ImCross as CrossIcon } from "react-icons/im";
 
 // Components
 import FileUploadDetails from "./FileUploadDetails.jsx";
@@ -113,21 +114,22 @@ export default function Index(rerender) {
 			return <></>;
 		}
 		return (
-			<div
-				className="backscreen"
-				onClick={() => {
-					setOpenModal(false);
-				}}
-			>
+			<div className="backscreen">
 				<div
 					className="modal"
 					onClick={(e) => {
 						e.stopPropagation();
 					}}
 				>
+					<CrossIcon
+						className="file-upload-form-cross"
+						onClick={() => {
+							setOpenModal(false);
+						}}
+					/>
 					<form className="file-upload-form">
 						<label htmlFor="file" className="file-input-label">
-							<ImUpload className="file-input-label-icon" /> Browse Files
+							<BrowseFilesIcon className="file-input-label-icon" /> Browse Files
 						</label>
 						<input
 							className="file-input"

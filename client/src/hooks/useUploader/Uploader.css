@@ -15,6 +15,7 @@
 	background: white;
 	height: 30rem;
 	width: 25rem;
+	max-width: 100vw;
 	border-radius: 5px;
 	z-index: 6;
 	display: flex;
@@ -97,4 +98,16 @@
 
 .progress-bars-container::-webkit-scrollbar {
 	display: none;
+}
+
+.file-upload-form-cross {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: rgb(255, 79, 79);
+	cursor: pointer;
+}
+
+.file-upload-form-cross:hover {
+	transform: scale(1.1);
 }

@@ -2,7 +2,8 @@ import React from "react";
 
 // Css and icons
 import "./FileUploadDetails.css";
-import { BsFileEarmarkTextFill } from "react-icons/bs";
+import { BsFileEarmarkTextFill as UploadFileIcon } from "react-icons/bs";
+import { AiOutlineCheck as Checkmark } from "react-icons/ai";
 
 export default function FileUploadDetails({ filename, percentage }) {
 	let trimmedFilename = filename.substr(0, 15).trim();
@@ -15,11 +16,16 @@ export default function FileUploadDetails({ filename, percentage }) {
 
 	return (
 		<div className="file-container">
-			<BsFileEarmarkTextFill className="upload-file-icon" />
+			<UploadFileIcon className="upload-file-icon" />
 			<div className="upload-details-container">
 				<div className="details">
 					<p className="upload-filename">{trimmedFilename}</p>
-					{percentage > 0 ? <p className="upload-percentage">{`${percentage}%`}</p> : ""}
+					{percentage > 0 && percentage < 99 ? (
+						<p className="upload-percentage">{`${percentage}%`}</p>
+					) : (
+						""
+					)}
+					{percentage === 100 ? <Checkmark className="upload-checkmark" /> : ""}
 				</div>
 				<div className="progress-bar">
 					<div

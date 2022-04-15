@@ -8,6 +8,7 @@ const cors = require("cors");
 
 const crudRoutes = require("./routes/file-folder-crud");
 const fetchRoutes = require("./routes/file-folder-fetch");
+const confiruarionRoutes = require("./routes/configuration");
 
 // Handles File Uploads
 app.use(
@@ -34,12 +35,17 @@ app.use(bodyParser.json());
 // API Routes
 app.use(crudRoutes);
 app.use(fetchRoutes);
+app.use("/configuration", confiruarionRoutes);
 
 // Hosting Frontend
 app.get("/*", (req, res) => {
 	res.sendFile(path.join(__dirname, "../client/build", "index.html"));
 });
 
-app.listen(5000, () => {
-	console.log("Server Running on port 5000 🚀🚀🚀");
+// Get Port from configuration
+const configuration = require("../client/src/configuration.json");
+const port = configuration.port;
+
+app.listen(port, () => {
+	console.log(`Server Running on port ${port} 🚀🚀🚀`);
 });

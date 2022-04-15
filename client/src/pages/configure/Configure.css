@@ -8,13 +8,99 @@
 	width: 100%;
 	display: grid;
 	place-content: center;
+	background-color: var(--primary-color);
 }
 
 .page-title {
 	width: 100%;
 	font-size: 2rem;
-	color: var(--primary-color);
+	color: white;
 	letter-spacing: 3px;
-	padding-bottom: 0.5rem;
-	border-bottom: 5px solid var(--primary-color);
+	padding: 0.25rem 0;
+}
+
+.current-port {
+	margin-top: 3rem;
+	font-size: 1.25rem;
+	letter-spacing: 3px;
+	color: white;
+	width: fit-content;
+	background-color: rgb(69, 69, 69);
+	padding: 0.25rem 1.25rem;
+	margin-bottom: 2rem;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.port-change-form {
+	margin-bottom: 5rem;
+}
+
+.port-input {
+	outline: none;
+	border: none;
+	border-bottom: 2px solid rgb(69, 69, 69);
+	cursor: text;
+	letter-spacing: 3px;
+	padding: 0.25rem 0.5rem;
+}
+
+.port-input::placeholder {
+	color: gray;
+}
+
+.port-submit-btn {
+	outline: none;
+	border: none;
+	letter-spacing: 2.5px;
+	padding: 0.25rem 0.5rem;
+	margin-left: 1rem;
+	cursor: pointer;
+	transition: all 100ms;
+}
+
+.port-submit-btn:hover {
+	background-color: var(--primary-color);
+	color: white;
+	transform: scale(1.2);
+}
+
+.shutdown-server-btn-container {
+	width: 100%;
+	display: grid;
+	place-content: center;
+}
+
+.shutdown-server-btn {
+	font-size: 2rem;
+	outline: none;
+	border: none;
+	letter-spacing: 2px;
+	padding: 0.5rem 1.5rem;
+	margin-left: 1rem;
+	cursor: pointer;
+	border-radius: 10px;
+	transition: all 100ms;
+	background-color: rgb(69, 69, 69);
+	color: white;
+}
+
+.shutdown-server-btn:hover {
+	background-color: #ef6364;
+	color: white;
+}
+
+@media screen and (max-width: 480px) {
+	.port-input {
+		width: 40%;
+	}
+	.port-submit-btn {
+		padding: 0.25rem 0.3rem;
+	}
+	.shutdown-server-btn {
+		font-size: 1rem;
+	}
+	.current-port {
+		font-size: 1rem;
+	}
 }

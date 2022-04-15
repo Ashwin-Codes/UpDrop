@@ -6,6 +6,7 @@ const fs = require("fs");
 // Delete Files
 router.post("/rm", (req, res) => {
 	const body = req.body;
+	console.log(body);
 	const path = `${__dirname}/../uploads${body.path}`;
 
 	// Check if file exists

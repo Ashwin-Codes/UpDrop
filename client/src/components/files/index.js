@@ -16,6 +16,9 @@ import AddFolderInput from "./AddFolderInput";
 import useUploader from "../../hooks/useUploader";
 import useNotification from "../../hooks/useNotification";
 
+// Configuration
+import Configuration from "../../configuration.json";
+
 export default function Files({ searchInputText }) {
 	const navigate = useNavigate();
 	const [Notification, notify] = useNotification("notification");
@@ -27,6 +30,24 @@ export default function Files({ searchInputText }) {
 	const [files, setFiles] = useState([]);
 	const [filteredFiles, setfilteredFiles] = useState([]);
 	const [addingFolder, setAddingFolder] = useState(false);
+
+	// Development server requirement
+	const [port, setPort] = useState(Configuration.port);
+
+	useEffect(() => {
+		async function getCurrentPort() {
+			let url = "/configuration/current-port";
+			if (process.env.NODE_ENV === "development") {
+				url = `http://localhost:${Configuration.port}/configuration/current-port/`;
+			}
+			const response = await fetch(url);
+			const data = await response.json();
+			return data["current-port"];
+		}
+		getCurrentPort().then((res) => {
+			setPort(parseInt(res));
+		});
+	});
 
 	// Filter the files state when search input value changes
 	useEffect(() => {
@@ -46,7 +67,7 @@ export default function Files({ searchInputText }) {
 		let url = "/download";
 		// A fix for developers so the urls could automatically change to avoid CORS.
 		if (process.env.NODE_ENV === "development") {
-			url = "http://localhost:5000/download";
+			url = `http://localhost:${port}/download`;
 		}
 		let file = `${params["*"]}/${fileName}`;
 		window.open(`${url}/${file}`);
@@ -56,7 +77,7 @@ export default function Files({ searchInputText }) {
 		let url = "/rm";
 		// A fix for developers so the urls could automatically change to avoid CORS.
 		if (process.env.NODE_ENV === "development") {
-			url = "http://localhost:5000/rm";
+			url = `http://localhost:${port}/rm`;
 		}
 		const body = { path: `${params["*"]}/${file.name}`, isFolder: file.isFolder };
 		let response = await fetch(url, {
@@ -80,7 +101,7 @@ export default function Files({ searchInputText }) {
 		let url = "/files";
 		// A fix for developers so the urls could automatically change to avoid CORS.
 		if (process.env.NODE_ENV === "development") {
-			url = "http://localhost:5000/files";
+			url = `http://localhost:${port}/files`;
 		}
 		const body = { directory: `${params["*"]}` };
 		const res = await fetch(url, {
@@ -101,7 +122,7 @@ export default function Files({ searchInputText }) {
 			let url = "/files";
 			// A fix for developers so the urls could automatically change to avoid CORS.
 			if (process.env.NODE_ENV === "development") {
-				url = "http://localhost:5000/files";
+				url = `http://localhost:${port}/files`;
 			}
 			const body = { directory: `${params["*"]}` };
 			const response = await fetch(url, {
@@ -122,7 +143,7 @@ export default function Files({ searchInputText }) {
 			}
 		}
 		getFiles();
-	}, [params, notify]);
+	}, [params, notify, port]);
 
 	return (
 		<>
@@ -156,6 +177,7 @@ export default function Files({ searchInputText }) {
 									params={params}
 									rerender={rerender}
 									notify={notify}
+									port={port}
 								/>
 							)}
 						</div>

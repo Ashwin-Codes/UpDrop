@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "./AddFolderInput.css";
 
-export default function AddFolderInput({ params, rerender, notify }) {
+export default function AddFolderInput({ params, rerender, notify, port }) {
 	const inputRef = useRef();
 
 	function getFolderName() {
@@ -20,7 +20,7 @@ export default function AddFolderInput({ params, rerender, notify }) {
 
 		// A fix for developers so the urls could automatically change to avoid CORS.
 		if (process.env.NODE_ENV === "development") {
-			url = "http://localhost:5000/mkdir";
+			url = `http://localhost:${port}/mkdir`;
 		}
 
 		const response = await fetch(url, {

@@ -8,12 +8,32 @@ import { ImUpload } from "react-icons/im";
 // Components
 import FileUploadDetails from "./FileUploadDetails.jsx";
 
+// Configuration
+import Configuration from "../../configuration.json";
+
 export default function Index(rerender) {
 	const params = useParams();
 	const [openModal, setOpenModal] = useState(false);
 	const inputRef = useRef();
 	const [file, setFile] = useState([]);
 	const [fileUploadProgress, setFileUploadProgress] = useState({});
+	const [port, setPort] = useState(Configuration.port);
+
+	// Get Server Port
+	useEffect(() => {
+		async function getCurrentPort() {
+			let url = "/configuration/current-port";
+			if (process.env.NODE_ENV === "development") {
+				url = `http://localhost:${Configuration.port}/configuration/current-port/`;
+			}
+			const response = await fetch(url);
+			const data = await response.json();
+			return data["current-port"];
+		}
+		getCurrentPort().then((res) => {
+			setPort(parseInt(res));
+		});
+	});
 
 	// Resets all states
 	useEffect(() => {
@@ -58,7 +78,7 @@ export default function Index(rerender) {
 
 		// A fix for developers so the urls could automatically change to avoid CORS.
 		if (process.env.NODE_ENV === "development") {
-			url = "http://localhost:5000/upload";
+			url = `http://localhost:${port}/upload`;
 		}
 
 		http.open("POST", url, true);

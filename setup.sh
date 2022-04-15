@@ -19,7 +19,7 @@ function serverSetup(){
 function startServer(){
     echo "$(tput setaf 7) $(tput setab 0)"
     cd server
-    node server
+    npm start
 }
 
 function main(){

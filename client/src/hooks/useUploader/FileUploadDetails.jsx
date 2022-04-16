@@ -6,7 +6,7 @@ import { BsFileEarmarkTextFill as UploadFileIcon } from "react-icons/bs";
 import { AiOutlineCheck as Checkmark } from "react-icons/ai";
 
 export default function FileUploadDetails({ filename, percentage }) {
-	let trimmedFilename = filename.substr(0, 15).trim();
+	let trimmedFilename = filename.substr(0, 10).trim();
 	let fileParts = filename.split(".");
 	let fileExt = fileParts[fileParts.length - 1];
 

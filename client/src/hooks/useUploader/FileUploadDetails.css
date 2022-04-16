@@ -50,3 +50,9 @@
 .upload-checkmark {
 	color: green;
 }
+
+@media screen and (max-width: 340px) {
+	.upload-filename {
+		font-size: 0.75rem;
+	}
+}

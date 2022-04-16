@@ -42,6 +42,7 @@
 	font-weight: bold;
 	width: 70%;
 	overflow-wrap: break-word;
+	padding: 0px 10px;
 }
 
 .filestats {
@@ -53,6 +54,10 @@
 	padding: 0.2rem 0.5rem 0.5rem 0.5rem;
 	font-weight: bold;
 	letter-spacing: 1.5px;
+}
+
+.filestat {
+	width: fit-content;
 }
 
 .icon {

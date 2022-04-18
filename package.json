@@ -1,0 +1,28 @@
+{
+	"name": "updown",
+	"version": "1.0.0",
+	"description": "Private cloud server",
+	"main": "index.js",
+	"scripts": {
+		"install": "cd server && npm install && cd .. && cd client && npm install",
+		"build": "cd client && npm run build",
+		"start": "cd server && npm start"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Ashwin-Codes/UpDown.git"
+	},
+	"keywords": [
+		"upload",
+		"server",
+		"download",
+		"private",
+		"cloud"
+	],
+	"author": "Ashwin Bhargava",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Ashwin-Codes/UpDown/issues"
+	},
+	"homepage": "https://github.com/Ashwin-Codes/UpDown#readme"
+}

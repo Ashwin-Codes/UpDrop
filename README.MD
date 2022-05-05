@@ -12,7 +12,7 @@
 
 ## 💡 What is updown?
 
-Updown is meant to be a private server, which users can run locally, on a home server, on a cloud platform or even on a phone.<br> Its a home for all types of files for easy and fast uploads and downloads.<br>
+Updown is meant to be a private server, which users can run locally, on a home server, on a cloud platform or even on a phone.<br> Its a home for all types of files for easy and fast uploads, downloads.<br>
 
 ## ☕️ Features
 

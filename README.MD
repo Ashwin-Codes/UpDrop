@@ -1,32 +1,102 @@
-Requirements :
-NODE.JS v14.17.0 and NPM 6.14.13
+<div align="center">
+  <p align="center">
+    <img src="./EXAMPLES/updown.png" alt="Updown Header" width="750px" />
+  </p>
+</div>
+<br />
+<div>
+  <p align="center">
+    A private server which can be run locally, on cloud or on even a phone.
+  </p>
+</div>
 
-How to run server -
+## 💡 What is updown?
 
-in client directory:
+Updown is meant to be a private server, which users can run locally, on a home server, on a cloud platform or even on a phone.<br> Its a home for all types of files for easy and fast uploads and downloads.<br>
 
+## ☕️ Features
+
+-   Easiest private server to work with.
+-   Folders for better data organization.
+-   Small and lightweight.
+-   Modern and responsive UI.
+-   Simultaneous uploads multiple files.
+-   Configurations (changing port, server shutdown) can be handled from UI itself.
+-   Fast File search for easy file retrievals.
+
+## 🎨 Examples
+
+   <div align="center"><b>Adding Folders</b></div>
+    <div align="center">
+      <p align="center">
+        <img src="./EXAMPLES/addingFolders.gif" alt="Adding Folder" width="750px" />
+      </p>
+    </div>
+
+   <div align="center"><b>Adding Files</b></div>
+    <div align="center">
+      <p align="center">
+        <img src="./EXAMPLES/addingFiles.gif" alt="Adding Files" width="750px" />
+      </p>
+    </div>
+
+  <div align="center"><b>Searching Files</b></div>
+    <div align="center">
+      <p align="center">
+        <img src="./EXAMPLES/searchingFiles.gif" alt="Searching Files" width="750px" />
+      </p>
+    </div>
+
+  <div align="center"><b>Deleting Files</b></div>
+    <div align="center">
+      <p align="center">
+        <img src="./EXAMPLES/deletingFiles.gif" alt="Searching Files" width="750px" />
+      </p>
+    </div>
+
+## 🕺 Install and Run
+
+> **_NOTE:_** Developed and tested on NODE v12.22.12.
+
+<br>
+
+clone updown using `git`
+
+```bash
+$ git clone https://ashwin-codes/updown.git
+$ cd updown
 ```
-npm install
+
+build and run using `npm`:
+
+```bash
+$ npm install
+$ npm run build
+$ npm start
 ```
 
-```
-npm run build
-```
+> **_NOTE:_** Linux users can also run setup.sh to build and run.
 
-in server directory:
-
-```
-npm install
+```bash
+$ chmod +x setup.sh
+$ ./setup.sh
 ```
 
+## 💻 Develop
+
+<br>
+
+start Backend `node` development server :
+
+```bash
+$ sudo npm install nodemon -g
+$ cd server
+$ nodemon server
 ```
-npm start
+
+start Frontend `react` development server:
+
+```bash
+$ cd client
+$ nom server
 ```
-
-Hosts on port 5000;
-
-UPCOMMING
-
-1. ~~Responsive UI~~
-2. ~~Refined UI~~
-3. Working configuration tab

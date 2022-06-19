@@ -1,6 +1,6 @@
 <div align="center">
   <p align="center">
-    <img src="./EXAMPLES/updrop.png" alt="Updown Header" width="750px" />
+    <img src="./EXAMPLES/updrop.png" alt="Updrop Header" width="750px" />
   </p>
 </div>
 <br />
@@ -10,9 +10,9 @@
   </p>
 </div>
 
-## 💡 What is updown?
+## 💡 What is updrop?
 
-Updown is meant to be a private server, which users can run locally, on a home server, on a cloud platform or even on a phone.<br> Its a home for all types of files for easy and fast uploads, downloads.<br>
+Updrop is meant to be a private server, which users can run locally, on a home server, on a cloud platform or even on a phone.<br> Its a home for all types of files for easy and fast uploads, downloads.<br>
 
 ## ☕️ Features
 
@@ -60,11 +60,11 @@ Updown is meant to be a private server, which users can run locally, on a home s
 
 <br>
 
-clone updown using `git`
+clone updrop using `git`
 
 ```bash
-$ git clone https://ashwin-codes/updown.git
-$ cd updown
+$ git clone https://ashwin-codes/updrop.git
+$ cd updrop
 ```
 
 build and run using `npm`:

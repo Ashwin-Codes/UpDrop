@@ -1,6 +1,6 @@
 <div align="center">
   <p align="center">
-    <img src="./EXAMPLES/updown.png" alt="Updown Header" width="750px" />
+    <img src="./EXAMPLES/updrop.png" alt="Updown Header" width="750px" />
   </p>
 </div>
 <br />

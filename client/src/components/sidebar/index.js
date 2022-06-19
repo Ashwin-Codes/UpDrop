@@ -14,7 +14,7 @@ export default function Sidebar() {
 		<div className="sidebar">
 			<div className="logoContainer">
 				<p className="logo-up">Up</p>
-				<p className="logo-down">Down</p>
+				<p className="logo-down">Drop</p>
 				<FaCloudUploadAlt className="logo-icon" />
 			</div>
 			<ul className="sidebar-links">

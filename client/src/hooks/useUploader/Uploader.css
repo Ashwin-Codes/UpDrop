@@ -80,6 +80,14 @@
 	transform: scale(1.05);
 }
 
+.file-input-submit-btn:disabled {
+	transform: none;
+	border: 1px solid #999999;
+	background-color: #cccccc;
+	color: #666666;
+	cursor: not-allowed;
+}
+
 .file-input-label-icon {
 	font-size: 2.5rem;
 }

@@ -14,11 +14,15 @@ import Configuration from "../../configuration.json";
 
 export default function Index(rerender) {
 	const params = useParams();
-	const [openModal, setOpenModal] = useState(false);
 	const inputRef = useRef();
+
+	// States
+	const [openModal, setOpenModal] = useState(false);
 	const [file, setFile] = useState([]);
+	const [isUploading, setIsUploading] = useState(false);
 	const [fileUploadProgress, setFileUploadProgress] = useState({});
 	const [port, setPort] = useState(Configuration.port);
+	const [abortFunction, setAbortFunction] = useState([]);
 
 	// Get Server Port
 	useEffect(() => {
@@ -92,17 +96,24 @@ export default function Index(rerender) {
 			});
 		});
 
+		// Upload Complete listener
 		http.onreadystatechange = function () {
 			if (http.readyState === 4 && http.status === 200) {
+				// Rerender for uploaded file to appear
 				rerender();
 			}
 		};
+
+		// Abort Function
+		abortFunction.push({ filename: file.name, abortFunc: http.abort.bind(http) });
+
 		http.send(data);
 	}
 
 	// Starts Upload
 	function handleSubmit(e) {
 		e.preventDefault();
+		setIsUploading(true);
 		file.forEach((file) => {
 			uploadRequest(file);
 		});
@@ -124,25 +135,43 @@ export default function Index(rerender) {
 					<CrossIcon
 						className="file-upload-form-cross"
 						onClick={() => {
+							abortFunction.forEach((file) => {
+								file.abortFunc();
+							});
+							setIsUploading(false);
 							setOpenModal(false);
 						}}
 					/>
+
 					<form className="file-upload-form">
 						<label htmlFor="file" className="file-input-label">
-							<BrowseFilesIcon className="file-input-label-icon" /> Browse Files
+							<BrowseFilesIcon className="file-input-label-icon" />
+							Browse Files
 						</label>
+
 						<input
 							className="file-input"
 							type="file"
 							id="file"
 							ref={inputRef}
-							onChange={getFiles}
+							onChange={() => {
+								getFiles();
+								setIsUploading(false);
+							}}
 							multiple
 						/>
 					</form>
-					<button className="file-input-submit-btn" onClick={handleSubmit}>
-						Upload
-					</button>
+
+					{file.length > 0 && (
+						<button
+							className="file-input-submit-btn"
+							onClick={handleSubmit}
+							disabled={isUploading}
+						>
+							Upload
+						</button>
+					)}
+
 					<div className="progress-bars-container">
 						{file.map((ele) => {
 							return (

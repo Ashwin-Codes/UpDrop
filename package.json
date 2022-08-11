@@ -1,5 +1,5 @@
 {
-	"name": "updown",
+	"name": "updrop",
 	"version": "1.0.0",
 	"description": "Private cloud server",
 	"main": "index.js",
@@ -10,7 +10,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/Ashwin-Codes/UpDown.git"
+		"url": "git+https://github.com/Ashwin-Codes/UpDrop.git"
 	},
 	"keywords": [
 		"upload",
@@ -22,7 +22,7 @@
 	"author": "Ashwin Bhargava",
 	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/Ashwin-Codes/UpDown/issues"
+		"url": "https://github.com/Ashwin-Codes/UpDrop/issues"
 	},
-	"homepage": "https://github.com/Ashwin-Codes/UpDown#readme"
+	"homepage": "https://github.com/Ashwin-Codes/UpDrop#readme"
 }

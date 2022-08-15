@@ -21,7 +21,13 @@ router.post("/files", (req, res) => {
 		const body = req.body;
 		console.log("/files path : ", body);
 		const files = [];
-		const defaultPath = `${__dirname}/../uploads${body.directory}`;
+		const defaultPath = `${__dirname}/../uploads/${body.directory}`;
+		// Check if folder exists
+		if (!fs.existsSync(defaultPath)) {
+			res.json({ err: true, errMsg: "Folder Does Not exists !", errCode: 404 });
+			return;
+		}
+
 		const allFiles = fs.readdirSync(defaultPath, {
 			withFileTypes: true,
 		});

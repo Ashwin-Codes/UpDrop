@@ -59,8 +59,12 @@ export default function Files({ searchInputText }) {
 
 	// onClick Function for folders
 	function changeUrl(dir) {
-		const newUrl = `/${params["*"]}`;
-		navigate(`/dashboard${newUrl}/${dir}`);
+		const oldUrl = `${params["*"]}`;
+		let newUrl = `/dashboard/${oldUrl}/${dir}`;
+		if (oldUrl === "") {
+			newUrl = `/dashboard/${dir}`;
+		}
+		navigate(newUrl);
 	}
 
 	function downloadFile(fileName) {
@@ -132,18 +136,20 @@ export default function Files({ searchInputText }) {
 					"Content-Type": "application/json",
 				},
 			}).catch((err) => {
-				console.log("error");
 				notify("Failed to Fetch Files.", 3, "error");
 			});
 			const data = await response.json();
 			if (data?.err) {
-				notify(data.errMsg, 30, "error");
+				notify(data.errMsg, 5, "error");
+				if (data?.errCode === 404) {
+					navigate("/dashboard");
+				}
 			} else {
 				setFiles(data);
 			}
 		}
 		getFiles();
-	}, [params, notify, port]);
+	}, [params, notify, port, navigate]);
 
 	return (
 		<>

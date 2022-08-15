@@ -24,7 +24,7 @@ export default function Files({ searchInputText }) {
 	const [Notification, notify] = useNotification("notification");
 	const params = useParams();
 
-	const [Uploader, toggleModal] = useUploader(rerender);
+	const [Uploader, toggleModal] = useUploader(rerender, notify);
 
 	// States
 	const [files, setFiles] = useState([]);

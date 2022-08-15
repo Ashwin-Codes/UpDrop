@@ -12,7 +12,7 @@ import FileUploadDetails from "./FileUploadDetails.jsx";
 // Configuration
 import Configuration from "../../configuration.json";
 
-export default function Index(rerender) {
+export default function Index(rerender, notify) {
 	const params = useParams();
 	const inputRef = useRef();
 
@@ -22,7 +22,7 @@ export default function Index(rerender) {
 	const [isUploading, setIsUploading] = useState(false);
 	const [fileUploadProgress, setFileUploadProgress] = useState({});
 	const [port, setPort] = useState(Configuration.port);
-	const [abortFunction, setAbortFunction] = useState([]);
+	const abortFunction = [];
 
 	// Get Server Port
 	useEffect(() => {
@@ -74,6 +74,13 @@ export default function Index(rerender) {
 
 	// Upload function. Used XML request for progress property.
 	async function uploadRequest(file) {
+		// Checking upload limit
+		const uploadLimit = Configuration["file-size-cap"];
+		if (uploadLimit !== "none" && file.size / 1024 / 1024 > uploadLimit) {
+			notify(`File Size Limit Exceeded. Allowed : ${uploadLimit}MB"`, 3, "error");
+			setIsUploading(false);
+			return;
+		}
 		let data = new FormData();
 		data.append("file", file);
 		data.append("path", params["*"]);
@@ -104,9 +111,21 @@ export default function Index(rerender) {
 			}
 		};
 
+		// Server's response on upload limit
+		http.onload = function () {
+			if (!http.response) {
+				return;
+			}
+			let response = JSON.parse(http.response);
+
+			if (response.err === true) {
+				notify(response.errMsg, 3, "error");
+			}
+			return;
+		};
+
 		// Abort Function
 		abortFunction.push({ filename: file.name, abortFunc: http.abort.bind(http) });
-
 		http.send(data);
 	}
 

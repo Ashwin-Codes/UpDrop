@@ -5,7 +5,15 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Dashboard from "./pages/dashboard/";
 import Configure from "./pages/configure/";
 
+// Hooks
+import useTheme from "./hooks/useTheme";
+
 function App() {
+	// Theme Handler
+	const { getCurrentTheme, setTheme } = useTheme();
+	const currentTheme = getCurrentTheme();
+	setTheme(currentTheme);
+
 	return (
 		<BrowserRouter>
 			<div className="App">

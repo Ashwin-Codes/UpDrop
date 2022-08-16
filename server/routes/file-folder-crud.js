@@ -9,17 +9,14 @@ const configuration = require("../../client/src/configuration.json");
 // Delete Files
 router.post("/rm", (req, res) => {
 	const body = req.body;
-	console.log(body);
 	const path = `${__dirname}/../uploads/${body.path}`;
 
-	console.log(path);
 	// Check if file exists
 	if (!fs.existsSync(path)) {
 		res.json({ err: true, errMsg: "File you want to delete does not exists." });
 		return;
 	}
 
-	console.log("File Deleted : ", path);
 	if (body.isFolder) {
 		fs.rmSync(path, { recursive: true, force: true });
 	} else {
@@ -47,7 +44,6 @@ router.post("/upload", (req, res) => {
 		return;
 	}
 
-	console.log("File Uploaded : ", file.name);
 	res.end();
 });
 
@@ -55,7 +51,6 @@ router.post("/upload", (req, res) => {
 router.post("/mkdir", (req, res) => {
 	const body = req.body;
 	const folder = `${__dirname}/../uploads/${body.name}`;
-	console.log(folder);
 	if (fs.existsSync(folder)) {
 		res.json({ err: true, errMsg: "Folder allready exists" });
 		return;

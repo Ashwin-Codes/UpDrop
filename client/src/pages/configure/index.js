@@ -3,6 +3,9 @@ import React, { useState, useEffect, useRef } from "react";
 // Components
 import Sidebar from "../../components/sidebar";
 import MobileNav from "../../components/mobile-nav";
+import Theme from "../../components/theme";
+
+// Hooks
 import useNotification from "../../hooks/useNotification";
 
 // Css and icons
@@ -10,7 +13,7 @@ import "./Configure.css";
 import { FaRegTimesCircle } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-// configuration
+// Configuration
 import configuration from "../../configuration.json";
 
 export default function Configure() {
@@ -78,7 +81,7 @@ export default function Configure() {
 		});
 		notify("Server have been Shutdown", 20);
 	}
-
+	// const arrayOfThemes = themes["available-themes"].map((theme) => {});
 	return (
 		<>
 			<Notification />
@@ -102,26 +105,35 @@ export default function Configure() {
 							/>
 						)}
 					</div>
-					<div className="port-container">
-						<h1 className="current-port" ref={portRef}>
-							Current Port :
-						</h1>
-						<form className="port-change-form" onSubmit={portChangeRequestHandler}>
-							<input
-								type="number"
-								className="port-input"
-								ref={portInputRef}
-								placeholder="eg. 1024"
-							/>
-							<button type="submit" className="port-submit-btn">
-								CHANGE PORT
-							</button>
-						</form>
+					<h1 className="ui-configuration-heading">UI Configuration</h1>
+					<div className="ui-configuration-section">
+						<div className="themes-container">
+							<Theme />
+						</div>
 					</div>
-					<div className="shutdown-server-btn-container">
-						<button onClick={shutdownServer} className="shutdown-server-btn">
-							SHUTDOWN SERVER
-						</button>
+					<h1 className="server-configuration-heading">Server Configuration</h1>
+					<div className="server-configuration-section">
+						<div className="port-container">
+							<h1 className="current-port" ref={portRef}>
+								Current Port :
+							</h1>
+							<form className="port-change-form" onSubmit={portChangeRequestHandler}>
+								<input
+									type="number"
+									className="port-input"
+									ref={portInputRef}
+									placeholder="eg. 1024"
+								/>
+								<button type="submit" className="port-submit-btn">
+									CHANGE PORT
+								</button>
+							</form>
+						</div>
+						<div className="shutdown-server-btn-container">
+							<button onClick={shutdownServer} className="shutdown-server-btn">
+								SHUTDOWN SERVER
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>

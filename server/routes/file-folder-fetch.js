@@ -7,10 +7,11 @@ const path = require("path");
 // Download Files
 router.get("/download/*", (req, res) => {
 	const filePath = req.params["0"];
-	console.log(filePath);
+
 	try {
 		res.download(`${__dirname}/../uploads/${filePath}`);
 	} catch (err) {
+		console.error(err);
 		res.json({ err: true, errMsg: "File Not Found." });
 	}
 });
@@ -19,7 +20,6 @@ router.get("/download/*", (req, res) => {
 router.post("/files", (req, res) => {
 	try {
 		const body = req.body;
-		console.log("/files path : ", body);
 		const files = [];
 		const defaultPath = `${__dirname}/../uploads/${body.directory}`;
 		// Check if folder exists
@@ -46,7 +46,7 @@ router.post("/files", (req, res) => {
 
 		res.json(files);
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 		res.json({ err: true, errMsg: "Server Error. Please Check server config." });
 	}
 });

@@ -22,7 +22,7 @@
 }
 
 .mobile-nav-links {
-	color: white;
+	color: var(--font-color-text);
 	margin-top: 5rem;
 	font-size: 1.1rem;
 }
@@ -37,7 +37,7 @@
 }
 
 .navlink {
-	color: white;
+	color: var(--font-color-text);
 	text-decoration: none;
 	width: 15rem;
 	display: flex;
@@ -47,14 +47,14 @@
 }
 
 .active-nav-link {
-	border-left: 0.2rem solid white;
+	border-left: 0.2rem solid var(--font-color-text);
 }
 
 .logoContainer {
 	display: flex;
 	justify-content: center;
 	gap: 3px;
-	color: white;
+	color: var(--font-color-logo);
 	padding: 1rem;
 }
 

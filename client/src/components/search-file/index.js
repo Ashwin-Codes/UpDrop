@@ -7,7 +7,7 @@ import { HiSearchCircle } from "react-icons/hi";
 export default function FileSearchForm({ searchInputRef, onChange }) {
 	return (
 		<form className="form">
-			<button className="searchBtn">
+			<button className="searchBtn" disabled>
 				<HiSearchCircle />
 			</button>
 			<input

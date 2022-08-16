@@ -15,7 +15,7 @@
 	z-index: 999;
 	display: flex;
 	gap: 1rem;
-	background-color: #eff3fb;
+	background-color: var(--searchbar-background);
 	align-items: center;
 	border-radius: 5px;
 }
@@ -46,6 +46,5 @@
 .msg {
 	max-width: 100%;
 	word-wrap: break-word;
-	/* max-height: 100%; */
 	font-size: 1rem;
 }

@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
 
 .file {
-	background: var(--primary-color);
+	background: var(--file-background);
 	height: 11rem;
 	min-width: 16rem;
 	border-radius: 10px;
 	position: relative;
-	color: white;
+	color: var(--font-color-text);
 	font-family: "Open Sans", sans-serif;
 	cursor: pointer;
 	transition: all 100ms linear;
@@ -29,7 +29,7 @@
 .fileicon {
 	min-height: 4rem;
 	min-width: 4rem;
-	background: white;
+	background: var(--fileicon-background);
 	border-radius: 4px;
 	display: grid;
 	place-content: center;
@@ -46,7 +46,7 @@
 }
 
 .filestats {
-	width: fit-content;
+	width: 50%;
 	position: absolute;
 	top: 100%;
 	left: 100%;
@@ -54,6 +54,8 @@
 	padding: 0.2rem 0.5rem 0.5rem 0.5rem;
 	font-weight: bold;
 	letter-spacing: 1.5px;
+	display: flex;
+	justify-content: flex-end;
 }
 
 .filestat {
@@ -78,8 +80,24 @@
 	margin-left: 15px;
 	font-size: 1.5rem;
 	font-weight: bold;
-	color: var(--primary-color);
-	background-color: white;
+	color: var(--file-icon-color);
+	background-color: var(--fileicon-background);
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	display: grid;
+	place-content: center;
+}
+
+.is-touch {
+	position: absolute;
+	top: 97%;
+	transform: translateY(-100%);
+	margin-left: 15px;
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--file-icon-color);
+	background-color: var(--fileicon-background);
 	width: 2rem;
 	height: 2rem;
 	border-radius: 50%;
@@ -95,8 +113,8 @@
 		margin-left: 15px;
 		font-size: 1.5rem;
 		font-weight: bold;
-		color: var(--primary-color);
-		background-color: white;
+		color: var(--file-icon-color);
+		background-color: var(--fileicon-background);
 		width: 2rem;
 		height: 2rem;
 		border-radius: 50%;

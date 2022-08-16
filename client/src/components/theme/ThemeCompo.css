@@ -1,0 +1,63 @@
+.theme-container {
+	display: flex;
+	flex-direction: row;
+	gap: 2rem;
+	width: fit-content;
+	height: fit-content;
+	flex-wrap: wrap;
+}
+
+.single-theme {
+	width: 15rem;
+	height: 10rem;
+	border-radius: 20px;
+	text-transform: capitalize;
+	letter-spacing: 3px;
+	font-size: 1rem;
+	border: 2px solid var(--font-color-text);
+	transition: all linear 0.2s;
+	cursor: pointer;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.active-theme {
+	transform: scale(1.2);
+}
+
+@media screen and (max-width: 720px) {
+	.single-theme {
+		width: 10rem;
+		height: 8rem;
+		border-radius: 5px;
+		text-transform: capitalize;
+		letter-spacing: 3px;
+		font-size: 0.7rem;
+		transition: all linear 0.2s;
+		cursor: pointer;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.theme-container {
+		justify-content: center;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.single-theme {
+		width: 8rem;
+		height: 4rem;
+		border-radius: 5px;
+		text-transform: capitalize;
+		letter-spacing: 3px;
+		font-size: 0.5rem;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

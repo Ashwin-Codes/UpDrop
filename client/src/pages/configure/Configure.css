@@ -14,32 +14,47 @@
 .page-title {
 	width: 100%;
 	font-size: 2rem;
-	color: white;
+	color: var(--font-color-text);
 	letter-spacing: 3px;
 	padding: 0.25rem 0;
 }
 
-.current-port {
+.server-configuration-heading {
 	margin-top: 3rem;
 	font-size: 1.25rem;
 	letter-spacing: 3px;
-	color: white;
+	color: var(--configuration-heading);
 	width: fit-content;
-	background-color: rgb(69, 69, 69);
+	background-color: var(--font-color-heading);
 	padding: 0.25rem 1.25rem;
 	margin-bottom: 2rem;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
 }
+.current-port {
+	font-size: 1.25rem;
+	letter-spacing: 3px;
+	color: var(--font-color-heading);
+	width: fit-content;
+	margin-bottom: 2rem;
+}
 
 .port-change-form {
-	margin-bottom: 5rem;
+	width: fit-content;
+	padding: 1rem;
+	border-radius: 5px;
+	margin-bottom: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+	background-color: var(--configuration-background);
 }
 
 .port-input {
 	outline: none;
 	border: none;
-	border-bottom: 2px solid rgb(69, 69, 69);
+	border-bottom: 2px solid var(--font-color-heading);
 	cursor: text;
 	letter-spacing: 3px;
 	padding: 0.25rem 0.5rem;
@@ -53,46 +68,59 @@
 	outline: none;
 	border: none;
 	letter-spacing: 2.5px;
-	padding: 0.25rem 0.5rem;
-	margin-left: 1rem;
+	padding: 0.25rem 2rem;
 	cursor: pointer;
 	transition: all 100ms;
+	background-color: var(--primary-color);
+	color: var(--font-color-text);
+	border-radius: 5px;
 }
 
 .port-submit-btn:hover {
-	background-color: var(--primary-color);
-	color: white;
-	transform: scale(1.2);
-}
-
-.shutdown-server-btn-container {
-	width: 100%;
-	display: grid;
-	place-content: center;
+	transform: scale(1.05);
+	background-color: var(--error-color);
 }
 
 .shutdown-server-btn {
-	font-size: 2rem;
+	font-size: 1rem;
 	outline: none;
 	border: none;
 	letter-spacing: 2px;
-	padding: 0.5rem 1.5rem;
-	margin-left: 1rem;
+	padding: 0.5rem 1rem;
 	cursor: pointer;
-	border-radius: 10px;
-	transition: all 100ms;
-	background-color: rgb(69, 69, 69);
-	color: white;
+	border-radius: 7px;
+	transition: all linear 100ms;
+	background-color: var(--primary-color);
+	color: var(--font-color-text);
+	border: 2px solid var(--font-color-text);
 }
 
 .shutdown-server-btn:hover {
-	background-color: #ef6364;
-	color: white;
+	transform: scale(1.05);
+	color: var(--font-color-text);
+	background-color: var(--error-color);
+}
+
+.ui-configuration-section {
+	margin-bottom: 10rem;
+}
+
+.ui-configuration-heading {
+	margin-top: 3rem;
+	font-size: 1.25rem;
+	letter-spacing: 3px;
+	color: var(--configuration-heading);
+	width: fit-content;
+	background-color: var(--font-color-heading);
+	padding: 0.25rem 1.25rem;
+	margin-bottom: 2rem;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
 }
 
 @media screen and (max-width: 480px) {
 	.port-input {
-		width: 40%;
+		width: 100%;
 	}
 	.port-submit-btn {
 		padding: 0.25rem 0.3rem;
@@ -102,5 +130,8 @@
 	}
 	.current-port {
 		font-size: 1rem;
+	}
+	.ui-configuration-section {
+		margin-bottom: 5rem;
 	}
 }

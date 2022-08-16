@@ -1,14 +1,28 @@
 :root {
-	/* --primary-color: #303654; */
-	--primary-color: #094ab1;
-	--sidebar-icon-color: #fffff;
-	--file-icon-color: #094ab1;
+	--primary-color: #26262e;
+	--sidebar-icon-color: #86868a;
+	--file-icon-color: #86868a;
 	--error-color: #ef6364;
 	--success-color: #45b0f8;
+	--searchbar-background: #26262e;
+	--searchbar-backgroundBtn: #86868a;
+	--page-background: #1d1b22;
+	--font-color-logo: #dddddf;
+	--font-color-heading: #d6d5d7;
+	--font-color-text: #acacaf;
+	--fileicon-background: #26262e;
+	--border-color: #fff;
+	--uploader-fontcolor: #acacaf;
+	--file-background: #26262e;
+	--modal-background: #1d1b22;
+	--configuration-background: #2b2833;
+	--configuration-heading: #26262e;
+	--btn-color: #26262e;
 }
 
 .page {
 	display: grid;
 	grid-template-columns: 1fr;
-	background: #ffffff;
+	background: var(--page-background);
+	min-height: 100vh;
 }

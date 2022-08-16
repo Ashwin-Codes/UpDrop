@@ -6,7 +6,7 @@
 .searchInput {
 	border: none;
 	outline: none;
-	background: hsl(220, 60%, 96%);
+	background: var(--searchbar-background);
 	border-radius: 5px;
 	padding-left: 2rem;
 	padding-right: 1rem;
@@ -14,6 +14,7 @@
 	margin-left: -1rem;
 	letter-spacing: 1.5px;
 	font-size: 1.2rem;
+	color: var(--font-color-heading);
 }
 
 .searchBtn {
@@ -22,7 +23,7 @@
 	height: 2.5rem;
 	width: 2.5rem;
 	border: none;
-	background-color: #d2def7;
+	background-color: var(--searchbar-backgroundBtn);
 	display: flex;
 	align-items: center;
 	justify-content: center;

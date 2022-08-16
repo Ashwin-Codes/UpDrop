@@ -15,6 +15,8 @@ export default function SingleFile({ name, isFolder, filesize, icon, onClick, de
 	}
 	let fileSize = filesize.toFixed(1) > 0.0 ? `${filesize.toFixed(1)} MB` : "< 0 MB";
 
+	// Checking if device is a touch device.
+	const isTouch = window.matchMedia("(any-hover: none)").matches;
 	return (
 		<div className="file" onClick={onClick.bind(this, name)}>
 			<div className="filecontainer">
@@ -25,7 +27,7 @@ export default function SingleFile({ name, isFolder, filesize, icon, onClick, de
 			</div>
 
 			<div
-				className="delete-btn"
+				className={isTouch ? "delete-btn is-touch" : "delete-btn"}
 				onClick={(e) => {
 					e.stopPropagation();
 				}}

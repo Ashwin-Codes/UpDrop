@@ -77,7 +77,7 @@ export default function Index(rerender, notify) {
 		// Checking upload limit
 		const uploadLimit = Configuration["file-size-cap"];
 		if (uploadLimit !== "none" && file.size / 1024 / 1024 > uploadLimit) {
-			notify(`File Size Limit Exceeded. Allowed : ${uploadLimit}MB"`, 3, "error");
+			notify(`File Size Limit Exceeded. Allowed : ${uploadLimit}MB`, 3, "error");
 			setIsUploading(false);
 			return;
 		}

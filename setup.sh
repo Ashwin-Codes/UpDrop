@@ -1,6 +1,7 @@
 #!/bin/bash
 
 function clientSetup(){
+    clear
     cd client 
     echo "$(tput setaf 2)Installing Client Dependencies"
     npm install &> /dev/null
@@ -28,13 +29,15 @@ NPM=`type -P npm`
 
 if test -z "$NODE"
 then
-    echo "$(tput setaf 1) $(tput setab 7)Please install node to proceed further."
+    echo "Installing Node"
+    sudo apt install nodejs -y &> /dev/null
     return 0;
 fi
 
 if test -z "$NPM" 
 then
-    echo "$(tput setaf 1) $(tput setab 7)Please install npm to proceed further."
+    echo "Installing NPM"
+    sudo apt install npm -y &> /dev/null
     return 0;
 fi
 
@@ -46,7 +49,6 @@ read CHOICE
 
 if [ $CHOICE == 'y' ] || [ $CHOICE == 'Y' ];
 then
-echo "$(tput setaf 1) $(tput setab 7)THIS REPOSITORY REQUIRES NODE V14+.MAKE SURE ITS INSTALLED."
 startServer
 fi
 

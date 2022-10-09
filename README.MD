@@ -10,15 +10,15 @@
   </p>
 </div>
 
-## 💡 What is updrop?
+# 💡 What is updrop?
 
-Updrop is meant to be a private server, which users can run locally, on a home server, on a cloud platform or even on a phone.<br> Its a home for all types of files for easy and fast uploads and downloads.<br>
+Updrop is meant to be a private server, which users can run locally, on a home server, on a cloud platform or even on a phone.<br> It is a home for all types of files for easy and fast uploads and downloads.<br>
 
-## 💻 Updrop Live Demonstration
+# 💻 Updrop Live Demonstration
 
 <b>Live at: </b> https://updrop.ashwincodes.com
 
-## ☕️ Features
+# ☕️ Features
 
 -   Folders for better data organization.
 -   Simultaneous uploads for multiple files.
@@ -29,20 +29,35 @@ Updrop is meant to be a private server, which users can run locally, on a home s
 -   Small and lightweight.
 -   Easiest private server to work with.
 
-## 🕺 Install and Run
+# 🕺 Install and Run
 
-> **_NOTE:_** Developed and tested on NODE v12.22.12.
+## 🤖 Automatic Install
+
+Install updrop in current directory.
+
+```bash
+$ npx updrop
+```
+
+cd into updrop and run server
+
+```bash
+$ cd updrop
+$ npm start
+```
+
+## 🤓 Manual Install
 
 <br>
 
-clone updrop using `git`
+Clone updrop using `git`
 
 ```bash
 $ git clone https://github.com/ashwin-codes/updrop
 $ cd updrop
 ```
 
-build and run using `npm`:
+Build and run using `npm`:
 
 ```bash
 $ npm install
@@ -57,11 +72,13 @@ $ chmod +x setup.sh
 $ ./setup.sh
 ```
 
-## 💻 Develop
+> **_NOTE:_** Preferred node version >= v12.22.12
+
+# 💻 Develop
 
 <br>
 
-start Backend `node` development server :
+Start Backend `node` development server :
 
 ```bash
 $ cd server
@@ -70,7 +87,7 @@ $ node server
 
 > **_NOTE:_** For Development its recommended to use NODEMON instead.
 
-start Frontend `react` development server:
+Start Frontend `react` development server:
 
 ```bash
 $ cd client

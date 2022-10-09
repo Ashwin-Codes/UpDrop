@@ -1,8 +1,9 @@
 {
 	"name": "updrop",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Private cloud server",
 	"main": "index.js",
+	"bin": "./install.js",
 	"scripts": {
 		"install": "cd server && npm install && cd .. && cd client && npm install",
 		"build": "cd client && npm run build",
@@ -14,15 +15,18 @@
 	},
 	"keywords": [
 		"upload",
-		"server",
 		"download",
-		"private",
-		"cloud"
+		"server",
+		"local server",
+		"private server"
 	],
 	"author": "Ashwin Bhargava",
 	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/Ashwin-Codes/UpDrop/issues"
 	},
-	"homepage": "https://github.com/Ashwin-Codes/UpDrop#readme"
+	"homepage": "https://github.com/Ashwin-Codes/UpDrop#readme",
+	"dependencies": {
+		"nanospinner": "^1.1.0"
+	}
 }

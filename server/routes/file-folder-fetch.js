@@ -8,6 +8,11 @@ const path = require("path");
 router.get("/download/*", (req, res) => {
 	const filePath = req.params["0"];
 
+	// Directory traversal vulnerability fix
+	if (filePath.indexOf("..") !== -1) {
+		res.json({ err: true, errMsg: "File Not Found." });
+	}
+
 	try {
 		res.download(`${__dirname}/../uploads/${filePath}`);
 	} catch (err) {
@@ -20,6 +25,12 @@ router.get("/download/*", (req, res) => {
 router.post("/files", (req, res) => {
 	try {
 		const body = req.body;
+
+		// Directory traversal vulnerability fix
+		if (body.directory.indexOf("..") !== -1) {
+			body.directory = "";
+		}
+
 		const files = [];
 		const defaultPath = `${__dirname}/../uploads/${body.directory}`;
 		// Check if folder exists
